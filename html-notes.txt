@@ -1,0 +1,12 @@
+Computers that are on 24 X 7 to serve applications, etc are called Servers.
+Computers that regular people use are called clients.
+
+Client Machine -> Browser -> ISP -> DNS Server
+To access websites on the internet, the user can use browsers and type the website URL, this is sent to the ISP (internet service provider). The ISP tries to find the IP Address of the computer that serves this website and returns back to the user.
+
+- IP Address: is the unique address of a computer.
+
+- Websites are basically a combination of 3 files that is served on an IP Address (i.e. server machine). 
+HTML (Hypertext markup language): provides structure to the website of the visible components.
+CSS (Cascading Style Sheets): provides styling to the existing website structure.
+JS (JavaScript): used to make the website more interactive such as what to do when a button is clicked, etc. 
