@@ -10,3 +10,21 @@ Types of CSS Selectors:-
 4. Attribute Selector: select html elements with certain attributes. E.g. p[draggable] will apply CSS to all p elements with draggable attribute. It is also possible to select using attribute values 
 e.g. p[draggable="false"]
 5. Universal Selector: * selects all attributes
+
+Colors in CSS:-
+1. name
+2. rgb
+3. hex
+4. rgba
+
+Fonts in CSS:-
+Absolute Size
+1. 1px -> 1/96th of inch
+2. 1pt -> 1/72nd of inch
+Relative Size
+3. 1em -> 100% of parent
+4. 1rem -> 100% of root (better to use this)
+
+Font weight can be configured using words or through range of integer from 100 - 900
+
+Box Model
