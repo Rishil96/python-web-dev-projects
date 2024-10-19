@@ -1,0 +1,12 @@
+There are 3 ways of adding CSS:-
+1. Inline: adding styles inside the HTML element itself using style attribute.
+2. Internal: adding styles inside the head element inside style element.
+3. External: adding styles in a separate CSS file.
+
+Types of CSS Selectors:-
+1. Tag
+2. Class
+3. ID
+4. Attribute Selector: select html elements with certain attributes. E.g. p[draggable] will apply CSS to all p elements with draggable attribute. It is also possible to select using attribute values 
+e.g. p[draggable="false"]
+5. Universal Selector: * selects all attributes
