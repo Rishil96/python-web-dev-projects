@@ -28,3 +28,12 @@ Relative Size
 Font weight can be configured using words or through range of integer from 100 - 900
 
 Box Model
+- Content
+- Padding
+- Border
+- Margin
+
+- height and weight affects the horizontal and vertical size of the content.
+- padding is the space between the content and the Border
+- border is an imaginary/visible line that separates the element from other elements
+- margin is the space outside the border of an element to create space between multiple elements.
