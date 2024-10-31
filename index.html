@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Login Page</title>
+    <!-- <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        .message { color: red; }
+    </style> -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+
+            // Simple login logic
+            if (username === "user" && password === "pass") {
+                messageDiv.textContent = "Login successful!";
+                messageDiv.style.color = "green";
+            } else {
+                messageDiv.textContent = "Invalid username or password.";
+                messageDiv.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
