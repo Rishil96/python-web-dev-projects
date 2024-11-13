@@ -5,13 +5,19 @@
     <title>{% block title %}{% endblock %}</title>
 
     <!--This below styling will be inherited by all templates that extends this base template-->
-    <style>
-        {% block styling %}
-        body {
-            background: purple;
-        }
-        {% endblock %}
-    </style>
+<!--    <style>-->
+<!--        {% block styling %}-->
+<!--        body {-->
+<!--            background: purple;-->
+<!--        }-->
+<!--        {% endblock %}-->
+<!--    </style>-->
+
+    {% block styles %}
+        <!-- Adding Bootstrap-Flask styling here -->
+        {{ bootstrap.load_css() }}
+    {% endblock %}
+
 </head>
 <body>
     {% block content %}{% endblock %}
