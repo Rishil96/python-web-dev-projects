@@ -23,8 +23,16 @@ def home():
 def login():
     login_form = LoginForm()
     # Check validations added in our forms when form is submitted
+    # validate on submit also acts like a POST request handling as form submit can only be done via POST request
+    # in our login template form, the POST method is mentioned
     if login_form.validate_on_submit():
-        return redirect('/home')
+        email = login_form.email.data
+        password = login_form.password.data
+        print(f"Email: {email}\nPassword: {password}")
+        if email == "admin@email.com" and password == "12345678":
+            return render_template("success.html")
+        else:
+            return render_template("denied.html")
     return render_template('login.html', form=login_form)
 
 
