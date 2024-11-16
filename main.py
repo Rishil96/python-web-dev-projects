@@ -72,5 +72,13 @@ def edit():
     return render_template("edit.html", book=book_selected)
 
 
+@app.route("/delete/<int:bid>", methods=["GET", "POST", "DELETE"])
+def delete(bid):
+    book_to_delete = db.get_or_404(Book, bid)
+    db.session.delete(book_to_delete)
+    db.session.commit()
+    return redirect("/")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
