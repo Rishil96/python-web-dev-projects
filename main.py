@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Float
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, FloatField
 from wtforms.validators import DataRequired
 import requests
 
@@ -42,6 +42,13 @@ class Movie(db.Model):
 
 with app.app_context():
     db.create_all()
+
+
+# Rate movie form
+class RateMovieForm(FlaskForm):
+    rating = FloatField(label="Your Rating Out of 10 e.g. 7.5", validators=[DataRequired()])
+    review = StringField(label="Your review", validators=[DataRequired()])
+    submit = SubmitField(label="Submit")
 
 
 # Logic to add a new movie comment after using once
@@ -83,6 +90,21 @@ with app.app_context():
 def home():
     all_movies = db.session.execute(db.select(Movie)).scalars().all()
     return render_template("index.html", movies=all_movies)
+
+
+@app.route("/edit", methods=["GET", "POST"])
+def rate_movie():
+    edit_form = RateMovieForm()
+    movie_id = request.args.get("id")
+    movie = db.get_or_404(Movie, movie_id)
+
+    if edit_form.validate_on_submit():
+        movie.rating = float(edit_form.rating.data)
+        movie.review = edit_form.review.data
+        db.session.commit()
+        return redirect("/")
+
+    return render_template("edit.html", movie=movie, form=edit_form)
 
 
 if __name__ == '__main__':
