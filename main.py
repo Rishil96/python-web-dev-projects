@@ -36,6 +36,9 @@ class Movie(db.Model):
     review: Mapped[str] = mapped_column(String, nullable=True)
     img_url: Mapped[str] = mapped_column(String, nullable=False)
 
+    def __repr__(self):
+        return f"Movie: {self.title}"
+
 
 with app.app_context():
     db.create_all()
@@ -78,7 +81,8 @@ with app.app_context():
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    all_movies = db.session.execute(db.select(Movie)).scalars().all()
+    return render_template("index.html", movies=all_movies)
 
 
 if __name__ == '__main__':
