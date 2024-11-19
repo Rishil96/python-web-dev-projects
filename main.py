@@ -51,6 +51,12 @@ class RateMovieForm(FlaskForm):
     submit = SubmitField(label="Submit")
 
 
+# Add movie form
+class AddMovieForm(FlaskForm):
+    title = StringField(label="Movie Title", validators=[DataRequired()])
+    submit = SubmitField(label="Add Movie")
+
+
 # Logic to add a new movie comment after using once
 # new_movie = Movie(
 #     title="Phone Booth",
@@ -114,6 +120,12 @@ def delete_movie():
     db.session.delete(movie)
     db.session.commit()
     return redirect(url_for("home"))
+
+
+@app.route("/add", methods=["GET", "POST"])
+def add_movie():
+    add_form = AddMovieForm()
+    return render_template("add.html", form=add_form)
 
 
 if __name__ == '__main__':
