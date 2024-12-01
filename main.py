@@ -38,8 +38,18 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/register')
+@app.route('/register', methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        password = request.form.get("password")
+        new_user = User(name=name,
+                        email=email,
+                        password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for("secrets", name=name))
     return render_template("register.html")
 
 
@@ -48,9 +58,9 @@ def login():
     return render_template("login.html")
 
 
-@app.route('/secrets')
-def secrets():
-    return render_template("secrets.html")
+@app.route('/secrets/<string:name>')
+def secrets(name):
+    return render_template("secrets.html", name=name)
 
 
 @app.route('/logout')
